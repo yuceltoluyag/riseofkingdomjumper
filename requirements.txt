@@ -1,0 +1,7 @@
+pyautogui
+Pillow
+numpy
+opencv-python
+python-imageseach-drov0
+colorama
+pygetwindow
