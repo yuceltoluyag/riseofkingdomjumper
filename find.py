@@ -1,9 +1,11 @@
 import pyautogui as auto
 from python_imagesearch.imagesearch import imagesearch as search
-import time,random,sys
+import time, random, sys
 from colorama import init
+
 init()
 from colorama import Fore, Back, Style
+
 # print(Fore.RED + 'some red text')
 # print(Back.GREEN + 'and with a green background')
 # print(Style.DIM + 'and in dim text')
@@ -22,27 +24,31 @@ def search_to(path):
         auto.moveTo(pos)
         # print(path + " found")
         return pos
-#   else:
-    #   print(path + " not found")
 
-def click_key(key, delay=.1):
+
+#   else:
+#   print(path + " not found")
+
+
+def click_key(key, delay=0.1):
     auto.keyDown(key)
     time.sleep(delay)
     auto.keyUp(key)
 
-def click_left(delay=.1):
+
+def click_left(delay=0.1):
     auto.mouseDown()
     time.sleep(delay)
     auto.mouseUp()
 
 
-def click_right(delay=.1):
-    auto.mouseDown(button='right')
+def click_right(delay=0.1):
+    auto.mouseDown(button="right")
     time.sleep(delay)
-    auto.mouseUp(button='right')
+    auto.mouseUp(button="right")
 
 
-def click_to(path, delay=.1):
+def click_to(path, delay=0.1):
     if onscreen(path):
         auto.moveTo(search(path))
         click_left(delay)
@@ -58,28 +64,33 @@ def buldurcan():
     if onscreen("./img/novisit1.png"):
         click_to("./img/novisit1.png")
     while not onscreen("./img/novisit1.png"):
-        auto.keyDown('down')
-        print(Fore.RED + 'Zoom Out')
-    auto.keyUp('down')
+        auto.keyDown("ctrlleft")  # hold down the key
+        auto.scroll(-1600)  # scroll down 10 "clicks"
+        time.sleep(1)
+        auto.keyUp("ctrlleft")  # release the key
+        time.sleep(1)
+        print(Fore.RED + "Zoom Out")
+    auto.keyUp("down")
     time.sleep(3)
-    print(Fore.GREEN + 'Hedef Bulundu')
+    print(Fore.GREEN + "Hedef Bulundu")
     click_to("./img/novisit1.png")
     hediyetopla()
     time.sleep(3)
 
+
 def hediyetopla():
     time.sleep(5)
     if onscreen("./img/giftme.png"):
-      print(Fore.RED + "Hediye Toplanıyor.")
-      time.sleep(1)
-      click_to("./img/giftme.png")
-      time.sleep(1)
-      click_left()
-      time.sleep(2)
-      click_to("./img/welcome.png",2)
-      click_to("./img/awesome.png",2)
-      time.sleep(1)
-      main()
+        print(Fore.RED + "Hediye Toplanıyor.")
+        time.sleep(1)
+        click_to("./img/giftme.png")
+        time.sleep(1)
+        click_left()
+        time.sleep(2)
+        click_to("./img/welcome.png", 2)
+        click_to("./img/awesome.png", 2)
+        time.sleep(1)
+        main()
     while not onscreen("./img/giftme.png"):
         print(Fore.LIGHTWHITE_EX + "Gece Modu")
         click_to("./img/giftmenight.png")
@@ -88,7 +99,8 @@ def hediyetopla():
         main()
         print(Fore.LIGHTCYAN_EX + "İşlem Başa Alındı")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
 
 # kacsaniye = 1
